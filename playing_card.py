@@ -1,5 +1,3 @@
-
-
 import cairo, functions, math
 
 # Set up surface
@@ -55,6 +53,17 @@ ctx.set_source_rgb(0.33, 0.67, 0)
 
 ctx.stroke()
 
+#draw letter A in left top corner
+ctx.move_to(320,120) #A
+ctx.line_to(280,170) #B
+ctx.move_to(320,120) #A
+ctx.line_to(360,170) #E
+ctx.move_to(300,145) #C
+ctx.line_to(340,145) #D
+ctx.close_path()
+ctx.stroke()
+
+
 surface.write_to_png('img/playing_card.png')
 
 
@@ -69,3 +78,6 @@ surface.write_to_png('img/playing_card.png')
 # ctx.line_to(450, 200+offset)
 # ctx.line_to(400, 250+offset)
 # ctx.save()
+
+
+
