@@ -8,9 +8,19 @@ import  math
 #     ctx.set_source_rgb(red,green,blue)
 
 # this function takes custom rectangle params 
-def draw_rectangle(ctx, x_start, y_start ,red, green, blue, rect_width=100, rect_height=100):
-    ctx.rectangle(x_start, y_start, rect_width, rect_height)
-    ctx.set_source_rgb(red, green, blue)
+
+def draw_rectangle(ctx, coordinates:dict):
+    if 'x_start' in coordinates and 'y_start' in coordinates and 'rect_width' in coordinates and 'rect_height' in coordinates:
+        ctx.rectangle(coordinates['x_start'], coordinates['y_start'], coordinates['rect_width'], coordinates['rect_height'])
+
+def set_shape_color(ctx, values:dict):
+    if 'r' in values and 'g' in values and 'b' in values :
+        ctx.set_source_rgb(values['r'], values['g'], values['b'])
+
+
+# def draw_rectangle(ctx, x_start, y_start ,red, green, blue, rect_width=100, rect_height=100):
+#     ctx.rectangle(x_start, y_start, rect_width, rect_height)
+#     ctx.set_source_rgb(red, green, blue)
     
 
 # this function takes custom circle params
@@ -20,6 +30,11 @@ def draw_circle(ctx, x, y, r,scalar=2,red=.33, green=.67, blue=0):
     ctx.arc(x, y, r, 0, (scalar)* math.pi)  # Full circle (0 to 2*pi radians) 
 
     ctx.set_source_rgb(red, green, blue)
+
+def dict_draw_circle(ctx, coordinates):
+    if 'x' in coordinates and 'y' in coordinates and 'radius' in coordinates:
+        ctx.arc(coordinates['x'], coordinates['y'], coordinates['radius'], 0, 2 * 3.14159)
+
     
 # this function draws an arrowhead
 def draw_arrowhead (ctx, x,y, width, height, a,b,red=.33, blue=.67,green=0 ):
@@ -68,6 +83,8 @@ def draw_pattern(ctx,n:int , x,y,
 
         n-=1
         offset+=150
+
+
 
 
 # #draw pattern1

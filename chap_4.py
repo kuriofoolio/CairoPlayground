@@ -7,7 +7,7 @@ ctx.set_source_rgb(.33, .33, .33)
 ctx.stroke() 
 
 #draw a pattern
-functions.draw_pattern(ctx,7,0,350,150,150)
+functions.draw_pattern(ctx,3,0,350,150,150)
 
 ctx.set_source_rgb(.33,.67,0)
 ctx.stroke()

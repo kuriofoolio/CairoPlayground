@@ -49,7 +49,7 @@ ctx.stroke()
 ctx.move_to(350, 350)
 # ctx.curve_to(350, 350,450, 350,400, 300)
 ctx.arc(375,325,25,0,math.pi)
-ctx.set_source_rgb(0.33, 0.67, 0)
+ctx.set_sourcea_rgb(0.33, 0.67, 0)
 
 ctx.stroke()
 
@@ -60,6 +60,13 @@ ctx.move_to(320,120) #A
 ctx.line_to(360,170) #E
 ctx.move_to(300,145) #C
 ctx.line_to(340,145) #D
+ctx.close_path()
+ctx.stroke()
+
+#draw letter A in left top corner
+ctx.move_to(600,500) #A
+ctx.line_to(650,450) #B
+
 ctx.close_path()
 ctx.stroke()
 
