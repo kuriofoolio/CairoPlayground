@@ -8,7 +8,8 @@ ctx.paint()
 
 #global radius value for arcs
 r=100 
-
+colors={'r':.502,'g':0,'b':.502}
+#  50.2% red, 0% green and 50.2% blue. 
                             # FLOWER
 #draw square                             
 rect_points={'x':200,'y':200,'w':200,'h':200}
@@ -19,29 +20,30 @@ ctx.stroke()
 
 #center petal
 functions.draw_circle(ctx, 300,200,r, 0,1)
+functions.set_shape_color(ctx, colors)
 ctx.stroke()
 
 #left petal
 functions.draw_circle(ctx, 200,300,r, 3/2,0)
+functions.set_shape_color(ctx, colors)
 ctx.stroke()
 
 #right petal
 functions.draw_circle(ctx, 400,300,r, 1,3/2)
+functions.set_shape_color(ctx, colors)
 ctx.stroke()
 
-#right inner petal
-functions.draw_circle(ctx, 300,250,50, 3/2,1/2)
+#center circular petal
+functions.draw_circle(ctx, 300,250,50, 0,2)
+functions.set_shape_color(ctx, colors)
 ctx.stroke()
 
-#left inner petal
-functions.draw_circle(ctx, 300,250,50, 1/2,3/2)
-ctx.stroke()
 
 # stalk
 ctx.move_to(300,300)
 ctx.line_to(300,400)
 ctx.set_line_width(10)
-functions.set_shape_color(ctx, {'r':.0, 'g':.0, 'b':.0})
+functions.set_shape_color(ctx, {'r': 1.00, 'g': 0.75, 'b': 0.80})
 ctx.stroke()
 
 surface.write_to_png('img/flower.png')
