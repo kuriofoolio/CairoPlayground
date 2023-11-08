@@ -7,8 +7,8 @@ ctx.set_source_rgb(.33, .33, .33)
 ctx.stroke() 
 
 #draw a pattern
-functions.draw_pattern(ctx,3,0,350,150,150)
-
+functions.draw_pattern(ctx,5,0,350,150,150)
+ctx.set_line_width(10)
 ctx.set_source_rgb(.33,.67,0)
 ctx.stroke()
 
@@ -20,7 +20,6 @@ surface=cairo.ImageSurface(cairo.FORMAT_RGB24,600, 400)
 ctx=cairo.Context(surface)
 ctx.set_source_rgb(.33, .33, .33)
 ctx.stroke() 
-
 
 
 

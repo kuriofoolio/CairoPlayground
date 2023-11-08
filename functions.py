@@ -9,9 +9,9 @@ import  math
 
 # this function takes custom rectangle params 
 
-def draw_rectangle(ctx, coordinates:dict):
-    if 'x_start' in coordinates and 'y_start' in coordinates and 'rect_width' in coordinates and 'rect_height' in coordinates:
-        ctx.rectangle(coordinates['x_start'], coordinates['y_start'], coordinates['rect_width'], coordinates['rect_height'])
+def draw_rectangle(ctx, coordinates:dict)->None :
+    if 'x' in coordinates and 'y' in coordinates and 'w' in coordinates and 'h' in coordinates:
+        ctx.rectangle(coordinates['x'], coordinates['y'], coordinates['w'], coordinates['h'])
 
 def set_shape_color(ctx, values:dict):
     if 'r' in values and 'g' in values and 'b' in values :
@@ -25,10 +25,11 @@ def set_shape_color(ctx, values:dict):
 
 # this function takes custom circle params
 #the context is passed because this function is called from outside this function
-def draw_circle(ctx, x, y, r,scalar=2,red=.33, green=.67, blue=0):
+def draw_circle(ctx, x, y, r,start_angle:int,end_angle:int,red=.33, green=.67, blue=0)->None :
      # Set the circle's center coordinates (x, y) and radius (r)
-    ctx.arc(x, y, r, 0, (scalar)* math.pi)  # Full circle (0 to 2*pi radians) 
-
+     #start angle is where your arc starts 
+     #end angle is where your arc ends 
+    ctx.arc(x, y, r, (start_angle)* math.pi, (end_angle)* math.pi)
     ctx.set_source_rgb(red, green, blue)
 
 def dict_draw_circle(ctx, coordinates):
@@ -69,10 +70,8 @@ def draw_pattern(ctx,n:int , x,y,
     while n>0:
             #draw pattern2
             # width=200, height =200
-        ctx.move_to(x+offset,y) #0, 350
-        ctx.line_to(0+offset,y-height) #0, 150
-        ctx.line_to(width+offset,y-width) #150+ofse, 150
-        ctx.line_to(height+offset,y) #150+ofse, 350
+        ctx.move_to(x,y) #0, 350
+        ctx.line_to(x,y-height) #0, 150
 
         #1st bezier
         ctx.move_to(x+offset,y)
@@ -84,7 +83,10 @@ def draw_pattern(ctx,n:int , x,y,
         n-=1
         offset+=150
 
-
+    while n>0:
+        ctx.line_to(x,y-height) #0, 150
+        n-=1
+        offset+=150
 
 
 # #draw pattern1
