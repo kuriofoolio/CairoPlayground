@@ -13,7 +13,7 @@ ctx.set_source_rgb(.33,.67,0)
 ctx.stroke()
 
 
-surface.write_to_png('img/pattern.png')
+surface.write_to_png(f'{functions.IMAGE_PATH}/pattern.png')
 
 
 surface=cairo.ImageSurface(cairo.FORMAT_RGB24,600, 400)
@@ -47,7 +47,15 @@ ctx.set_source_rgb(0, 0.33, 0.67)
 ctx.stroke()
 
 
-surface.write_to_png('img/2arcs.png')
+surface.write_to_png(f'{functions.IMAGE_PATH}/2arcs.png')
 
+#draw a sphere
+surface=cairo.ImageSurface(cairo.FORMAT_RGB24,600, 400)
+ctx=cairo.Context(surface)
+ctx.set_source_rgb(1, 1, 1)
+ctx.paint() 
+
+functions.draw_sphere(ctx, 300, 200, 150, (.67, 0.98, 0.5), (0,0,0))
+surface.write_to_png(f'{functions.IMAGE_PATH}/sphere.png')
 
 

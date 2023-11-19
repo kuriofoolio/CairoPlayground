@@ -1,4 +1,7 @@
-import  math 
+import math ,cairo
+
+# global image path
+IMAGE_PATH='img'
 
 #draw canvas 
 # explicitly mention the surface being used
@@ -25,18 +28,36 @@ def set_shape_color(ctx, values:dict):
 
 # this function takes custom circle params
 #the context is passed because this function is called from outside this function
-def draw_circle(ctx, x, y, r,start_angle:int,end_angle:int,red=.33, green=.67, blue=0)->None :
+def draw_circle(ctx, x, y, r,start_angle:int,end_angle:int)->None :
+    # ,red=.33, green=.67, blue=0
      # Set the circle's center coordinates (x, y) and radius (r)
      #start angle is where your arc starts 
      #end angle is where your arc ends 
     ctx.arc(x, y, r, (start_angle)* math.pi, (end_angle)* math.pi)
-    ctx.set_source_rgb(red, green, blue)
+    # ctx.set_source_rgb(red, green, blue)
 
 def dict_draw_circle(ctx, coordinates):
     if 'x' in coordinates and 'y' in coordinates and 'radius' in coordinates:
         ctx.arc(coordinates['x'], coordinates['y'], coordinates['radius'], 0, 2 * 3.14159)
 
+
+# this function draws a sphere
+def draw_sphere(ctx, x, y, radius, gradient_color1:set, gradient_color2:set)->None :
+    # Create a radial gradient
+    radial = cairo.RadialGradient(x, y, radius / 890898, x, y, radius)
+
+    # Add color stops
+    radial.add_color_stop_rgb(0, *gradient_color1)
+    radial.add_color_stop_rgb(1, *gradient_color2)
+
+    # Set the gradient as the source
+    ctx.set_source(radial)
+
+    # Draw the circle
+    draw_circle(ctx, x, y, radius, 0, 2 )
+    ctx.fill()
     
+
 # this function draws an arrowhead
 def draw_arrowhead (ctx, x,y, width, height, a,b,red=.33, blue=.67,green=0 ):
     ctx.move_to(x,y+b) #1
