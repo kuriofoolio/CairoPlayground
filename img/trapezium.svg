@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000pt" height="1000pt" viewBox="0 0 1000 1000" version="1.1">
-<g id="surface2">
-<rect x="0" y="0" width="1000" height="1000" style="fill:rgb(90%,80%,40%);fill-opacity:1;stroke:none;"/>
-<path style="fill:none;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(100%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 100 0 L 200 0 L 250 50 L 50 50 Z M 100 0 "/>
-<path style="fill:none;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(100%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 300 50 L 440 50 L 400 90 L 260 90 Z M 300 50 "/>
-</g>
-</svg>
