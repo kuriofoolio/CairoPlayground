@@ -1,7 +1,7 @@
 import math ,cairo
 
 # global image path
-IMAGE_PATH='img'
+IMAGE_PATH='img/'
 
 #draw canvas 
 # explicitly mention the surface being used
