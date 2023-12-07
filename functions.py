@@ -16,9 +16,17 @@ def draw_rectangle(ctx, coordinates:dict)->None :
     if 'x' in coordinates and 'y' in coordinates and 'w' in coordinates and 'h' in coordinates:
         ctx.rectangle(coordinates['x'], coordinates['y'], coordinates['w'], coordinates['h'])
 
-def set_shape_color(ctx, values:dict):
+# the inbuilt function does suffice however
+def set_shape_color(ctx, values:dict)->None:
     if 'r' in values and 'g' in values and 'b' in values :
         ctx.set_source_rgb(values['r'], values['g'], values['b'])
+
+#return grayscale colors
+def return_grayscale(ctx,r,g,b)->None:
+    gray=(r+g+b)/3
+    ctx.set_source_rgb(gray,gray,gray)
+    # gray_color_list=[gray for i in range(3)]
+    # return gray_color_list
 
 
 # def draw_rectangle(ctx, x_start, y_start ,red, green, blue, rect_width=100, rect_height=100):
