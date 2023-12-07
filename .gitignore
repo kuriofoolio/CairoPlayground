@@ -11,3 +11,4 @@ test_dict.py
 /img 
 .vscode 
 __pycache__
+venv/
