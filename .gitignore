@@ -1,17 +1,8 @@
-board.py
-circumscribe_triangle.py
-polygons.py
-paths_1.py
-pusher.sh
-# opacity.py
-test.py
-exam.py
-rotate.py
-test_dict.py
-graphix.py
+
 /img 
-.vscode 
 __pycache__
 venv/
-
 /test
+
+.vscode 
+pusher.sh
