@@ -13,3 +13,5 @@ graphix.py
 .vscode 
 __pycache__
 venv/
+
+/test
