@@ -6,7 +6,9 @@ pusher.sh
 # opacity.py
 test.py
 exam.py
+rotate.py
 test_dict.py
+graphix.py
 /img 
 .vscode 
 __pycache__

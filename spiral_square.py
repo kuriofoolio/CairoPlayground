@@ -1,68 +1,43 @@
-# make necessary imports
-import cairo, functions
+import functions, cairo, math
 
-surface=cairo.ImageSurface(cairo.FORMAT_RGB24,1000, 1000)
+
+#set the surface
+surface=functions.draw_surface(800,800)
 ctx=cairo.Context(surface)
-functions.set_shape_color(ctx, {'r':.67, 'g':.59, 'b':.11})
-ctx.paint() 
+ctx.set_source_rgb(1,1,1)
+ctx.paint()
 
-r=100
-colors={'r':1,'g':0,'b':0}
-                            # SQUARE WITH SPIRALS
-#draw square                             
-rect_points={'x':400,'y':200,'w':200,'h':200}
-functions.draw_rectangle(ctx, rect_points)
-functions.set_shape_color(ctx, {'r':.0, 'g':.0, 'b':.0})
+# rectangle
+ctx.rectangle(200,200,400,400)
+ctx.set_source_rgb(0,0,0)
 ctx.stroke()
 
-# draw spirals 
-functions.draw_circle(ctx, 400,200,r, 3/2,1/2)
-functions.set_shape_color(ctx, colors)
+#semicircle B bottom
+ctx.arc(400,600,200,math.pi,2*math.pi)
+ctx.set_source_rgb(0,0,1)
 ctx.stroke()
 
-functions.draw_circle(ctx, 600,400,r, 1/2,3/2)
-functions.set_shape_color(ctx, colors)
+# semicircle A left
+ctx.arc(200,400,200,1.5*math.pi, .5*math.pi)
+ctx.set_source_rgb(1,0,0)
 ctx.stroke()
 
-functions.draw_circle(ctx, 400,400,r, 1,0)
-functions.set_shape_color(ctx, colors)
+ctx.save()
+# Translate to the center of semicircle B right
+ctx.translate(600, 400)
+
+#semicircle B right
+ctx.arc(0,0,200,0.5*math.pi,1.5*math.pi)
+ctx.set_source_rgb(0,0,1)
 ctx.stroke()
 
-functions.draw_circle(ctx, 600,200,r, 0,1)
-functions.set_shape_color(ctx, colors)
+ctx.restore()
+
+ctx.translate(400,200)
+# #semicircle A top
+ctx.arc(00,0,200,0,1*math.pi)
+ctx.set_source_rgb(1,0,0)
 ctx.stroke()
 
-surface.write_to_png('img/spiral.png')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#draw a segment 
-# ctx.new_sub_path()
-# functions.set_shape_color(ctx, {'r':.5, 'g':.67, 'b':.22})
-# functions.draw_circle(ctx, 350,200,150,.75, 5/4)
-# # ctx.arc(350,200,150,.75, 5/4)
-# ctx.close_path()
-
-# ctx.move_to(x+offset,y) #0, 350
-#         ctx.line_to(0+offset,y-height) #0, 150
-#         ctx.line_to(width+offset,y-width) #150+ofse, 150
-#         ctx.line_to(height+offset,y) #150+ofse, 350
-
-
+surface.write_to_png(f"{functions.IMAGE_PATH}spiral_in_square.png")
 

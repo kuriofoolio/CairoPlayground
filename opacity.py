@@ -1,13 +1,14 @@
-import cairo, functions
+import cairo, functions, math
 
 # Set up surface
 surface = cairo.ImageSurface (cairo.FORMAT_RGB24, 600, 400)
 ctx = cairo.Context(surface)
-ctx.set_source_rgba(0.8, .8,.8)
+ctx.set_source_rgb(0.8, .8,.8)
 ctx.paint_with_alpha(1)
 
 # 0-opaque 1-transparent
 alpha=.5
+pi=functions.PI
 
 # #green rect
 redA, greenA, blueA=0,1,0
@@ -50,17 +51,55 @@ with cairo.ImageSurface(cairo.FORMAT_ARGB32, 600, 400) as surface:
 
 
 # grayscale
-r,g,b=0,0,1
-with cairo.ImageSurface(cairo.FORMAT_RGBA128F, 600, 400) as surface:
+r,g,b=1,1,1
+with cairo.ImageSurface(cairo.FORMAT_ARGB32, 600, 400) as surface:
     ctx = cairo.Context(surface)
-    ctx.set_source_rgb(.8,.876544321234,0)
-    ctx.paint()
+    ctx.set_source_rgb(.8,.8,.8)
+    ctx.paint_with_alpha(.0004)
 
-    ctx.rectangle(270,200,30,30)
+
+    # ctx.scale(5,5)
+    # ctx.translate(150,0)
+    # ctx.rotate(1/9*pi)
+    ctx.rectangle(0,0,150,150)
     functions.return_grayscale(ctx,r,g,b)
     ctx.fill()
 
+    # flip to the right 
+    ctx.scale(1,1)
+    ctx.translate(0,0)
+    # ctx.rotate(1/9*pi)
+    ctx.rectangle(150,0,150,150)
+    functions.return_grayscale(ctx,r,g,b)
+    ctx.fill()
+
+    # flip down
+
+    ctx.scale(1,1)
+    ctx.translate(0,0)
+    # ctx.rotate(1/9*pi)
+    ctx.rectangle(0,150,150,150)
+    functions.return_grayscale(ctx,r,g,b)
+    ctx.fill()
+
+    
+    # ellipse
+    # ctx.save()
+    # ctx.translate(150,200)
+    # ctx.scale(2,1)
+    # ctx.translate(-150,-200)
+    # functions.draw_circle(ctx,150,200, 100,0,2 )
+    # # ctx.translate(-300, -350)
+    # # ctx.arc(300, 350, 100, 0, math.pi*2)
+    # ctx.restore()
+    # ctx.set_source_rgb(0.8, 0, 0)
+    # ctx.fill_preserve()
+    
+    # ctx.set_source_rgb(1, 1, 1)
+    # ctx.set_line_width(10)
+    # ctx.stroke()
+
+    
+
     surface.write_to_png(f'{functions.IMAGE_PATH}grayscale.png')
-
-
 

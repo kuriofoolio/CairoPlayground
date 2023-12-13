@@ -1,17 +1,15 @@
 import math ,cairo
 
-# global image path
+# set your global image path here
 IMAGE_PATH='img/'
+PI=math.pi
 
-#draw canvas 
-# explicitly mention the surface being used
-# def draw_surface(ctx,width, height,red=.33, green=.33, blue=.33):
-#     surface=cairo.ImageSurface(cairo.FORMAT_RGB24,width, height)
-#     ctx=cairo.Context(surface)
-#     ctx.set_source_rgb(red,green,blue)
+# this function draws the surface that the context will use 
+def draw_surface(width, height)->cairo.Surface:
+    surface=cairo.ImageSurface(cairo.FORMAT_RGB24,width, height)
+    return surface
 
 # this function takes custom rectangle params 
-
 def draw_rectangle(ctx, coordinates:dict)->None :
     if 'x' in coordinates and 'y' in coordinates and 'w' in coordinates and 'h' in coordinates:
         ctx.rectangle(coordinates['x'], coordinates['y'], coordinates['w'], coordinates['h'])
@@ -28,11 +26,6 @@ def return_grayscale(ctx,r,g,b)->None:
     # gray_color_list=[gray for i in range(3)]
     # return gray_color_list
 
-
-# def draw_rectangle(ctx, x_start, y_start ,red, green, blue, rect_width=100, rect_height=100):
-#     ctx.rectangle(x_start, y_start, rect_width, rect_height)
-#     ctx.set_source_rgb(red, green, blue)
-    
 
 # this function takes custom circle params
 #the context is passed because this function is called from outside this function
@@ -117,47 +110,3 @@ def draw_pattern(ctx,n:int , x,y,
         n-=1
         offset+=150
 
-
-# #draw pattern1
-# ctx.move_to(0,350)
-# ctx.line_to(0,150)
-# ctx.line_to(150,150)
-# ctx.line_to(150,350)
-
-# #1st bezier
-# ctx.move_to(0,350)
-# ctx.curve_to(0,350,150,350,75,250)
-# #2nd bezier
-# ctx.move_to(150,350)
-# ctx.curve_to(150,350,0,350,75,250)
-
-# ctx.set_source_rgb(.33,.67,0)
-# ctx.stroke()
-
-# #draw pattern2
-# offset=150
-# ctx.move_to(0+offset,350)
-# ctx.line_to(0+offset,150)
-# ctx.line_to(150+offset,150)
-# ctx.line_to(150+offset,350)
-
-# #1st bezier
-# ctx.curve_to(150+offset,350,0+offset,350,75+offset,250)
-# #2nd bezier
-# ctx.move_to(0+offset,350)
-# ctx.curve_to(0+offset,350,150+offset,350,75+offset,250)
-
-# ctx.set_source_rgb(.33,.67,0)
-# ctx.stroke()
-
-# #draw pattern3
-# ctx.move_to(0+(offset*2),350)
-# ctx.line_to(0+(offset*2),150)
-# ctx.line_to(150+(offset*2),150)
-# ctx.line_to(150+(offset*2),350)
-
-# #1st bezier
-# ctx.curve_to(150+(offset*2),350,0+(offset*2),350,75+(offset*2),250)
-# #2nd bezier
-# ctx.move_to(0+(offset*2),350)
-# ctx.curve_to(0+(offset*2),350,150+(offset*2),350,75+(offset*2),250)
